@@ -1,0 +1,33 @@
+<?php
+$testimonials = $this->methodblock();
+?>
+<h1>Testimonials</h1>
+    <div class="news-holder cf">
+	    <ul class="news-headlines">
+		<?php	
+		 $i = 1;	
+		 foreach($testimonials as $testimonial){ ?>		
+			<li class="<?php echo $i=1?'selected':''?>"><?php echo $testimonial->getData('name'); ?></li>
+		<?php 
+		$i++;	
+		} ?>
+	    </ul>
+
+	    <div class="news-preview">
+		<?php
+		 foreach($testimonials as $testimonial){ ?>
+		      <div class="news-content top-content">
+			<div class="testimonials_content">
+				<p class="testimonials_avt">
+					<?php if($testimonial->getData('image')){
+						echo '<img src="'.Mage::getBaseUrl('media').'/'.$testimonial->getData('image').'" />';
+					}?>
+				</p>
+				<p class="testimonials_desc"><?php echo $testimonial->getData('description'); ?></p>
+			</div>
+			<p class="testimonials_title"><a href="javascript:void();"><?php echo $testimonial->getData('name'); ?></a></p>
+		      </div><!-- .news-content -->
+		<?php } ?>
+	    </div><!-- .news-preview -->
+	</div>
+

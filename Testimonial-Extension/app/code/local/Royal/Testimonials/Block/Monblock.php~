@@ -1,0 +1,7 @@
+<?php
+class Royal_Testimonials_Block_Monblock extends Mage_Core_Block_Template{
+     public function methodblock(){
+	$collection = Mage::getModel('testimonials/testimonials')->getCollection()->setOrder('id_royal_testimonials','asc');
+	return $collection;
+     }
+}

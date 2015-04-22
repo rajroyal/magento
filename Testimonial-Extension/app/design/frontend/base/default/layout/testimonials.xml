@@ -1,0 +1,28 @@
+<layout version="0.1.0">
+     <default>
+          <reference name="content">
+          </reference>
+ 	<reference name="head">
+		     <action method="addItem">
+			<type>skin_js</type>
+			<name>js/testimonials/jquery-1.8.1.min.js</name>
+			<params/>
+		    </action>
+		    <action method="addItem">
+			<type>skin_js</type>
+			<name>js/testimonials/vertical.news.slider.js</name>
+			<params/>
+		    </action>
+		    <action method="addCss">
+		        <stylesheet>css/testimonials/vertical.news.slider.css</stylesheet>
+		    </action>
+        </reference>
+      </default>
+      <routeurfrontend_index_index>
+           <reference name="content">
+                <block type="testimonials/monblock"  name="afficher_monbloc"
+                          template="testimonials/afficher.phtml" />
+           </reference>
+ 	  
+      </routeurfrontend_index_index>
+</layout>

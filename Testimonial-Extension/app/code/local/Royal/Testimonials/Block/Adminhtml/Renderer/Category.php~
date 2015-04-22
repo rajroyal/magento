@@ -1,0 +1,11 @@
+<?php
+class Royal_Testimonials_Block_Adminhtml_Renderer_Category extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
+{
+    public function render(Varien_Object $row)
+    {
+       
+        $value = $row->getData($this->getColumn()->getIndex());
+	$output = Mage::getModel('testimonials/categories')->load($value)->getData('name');
+	return $output;
+    }
+}

@@ -1,0 +1,57 @@
+<?php
+class Royal_Testimonials_Block_Adminhtml_Testimonials_Grid extends Mage_Adminhtml_Block_Widget_Grid
+{
+   public function __construct()
+   {
+       parent::__construct();
+       $this->setId('testimonialsGrid');
+       $this->setDefaultSort('id_royal_testimonials');
+       $this->setDefaultDir('DESC');
+       $this->setSaveParametersInSession(true);
+   }
+   protected function _prepareCollection()
+   {
+      $collection = Mage::getModel('testimonials/testimonials')->getCollection();
+      $this->setCollection($collection);
+      return parent::_prepareCollection();
+    }
+   protected function _prepareColumns()
+   {
+       $this->addColumn('id_royal_testimonials',
+             array(
+                    'header' => 'ID',
+                    'align' =>'right',
+                    'width' => '50px',
+                    'index' => 'id_royal_testimonials',
+               ));
+       $this->addColumn('name',
+               array(
+                    'header' => 'Title',
+                    'align' =>'left',
+                    'index' => 'name',
+              ));
+       $this->addColumn('description', array(
+                    'header' => 'Description',
+                    'align' =>'left',
+                    'index' => 'description',
+             ));
+ 	$this->addColumn('category', array(
+                    'header' => 'Category',
+                    'align' =>'left',
+                    'index' => 'category',
+		   'renderer' => 'Royal_Testimonials_Block_Adminhtml_Renderer_Category',
+             ));
+	 $this->addColumn('image', array(
+                    'header' => 'Image',
+                    'align' =>'left',
+                    'index' => 'image',
+		    'renderer' => 'Royal_Testimonials_Block_Adminhtml_Renderer_Image',
+             ));
+	
+         return parent::_prepareColumns();
+    }
+    public function getRowUrl($row)
+    {
+         return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+    }
+}

@@ -1,0 +1,31 @@
+<config>
+    <modules>
+        <Royal_MassActions>
+            <version>0.1.0</version>
+        </Royal_MassActions>
+    </modules>
+    <admin>
+          <routers>
+             <Royal_MassActions>
+                <use>admin</use>
+                <args>
+                   <module>Royal_MassActions</module>
+                   <frontName>royalmassactions</frontName>
+                </args>
+             </Royal_MassActions>
+          </routers>
+    </admin>
+    <adminhtml>
+        <events>
+            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <Royal_MassActions_Model_Observer>
+                        <type>singleton</type>
+                        <class>Royal_MassActions_Model_Observer</class>
+                        <method>addMassAction</method>
+                    </Royal_MassActions_Model_Observer>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+        </events>
+    </adminhtml>
+</config>
